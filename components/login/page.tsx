@@ -3,18 +3,18 @@ import Form from '@/components/uploadform';
 import {Akord, Auth} from '@akord/akord-js'
 import type {NextPage} from 'next'
 import Head from 'next/head'
-import React, {useState} from 'react'
+import React, { useState} from 'react'
 
 import {Button} from "@/components/ui/button";
 import {useTheme} from "next-themes";
 import Dashboard from "@/app/(dashboard)/(routes)/dashboard/page"
-
 
 function Login({onLogin}: { onLogin: (loggedIn: boolean) => void }) {
     const [akord, setAkord] = useState<Akord | null>()
     const [email, setEmail] = useState<string>('')
     const [pass, setPass] = useState<string>('')
     const [loggedIn, setLoggedIn] = useState<boolean>(false)
+
     const handleLogin = async (event: any) => {
         event.preventDefault();
 

@@ -6,10 +6,7 @@ import {useState} from 'react'
 import {Plus} from "lucide-react";
 
 const Form = () => {
-    const [akord, setAkord] = useState<Akord | null>()
-    const [email, setEmail] = useState<string>('')
-    const [pass, setPass] = useState<string>('')
-
+    const [akord, setAkord] = useState<Akord | null>();
     const handleUpload = async (files: FileList | null) => {
         if (!akord) {
             throw new Error('Akord-js not initialized')
