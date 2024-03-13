@@ -3,7 +3,7 @@ import Form from '@/components/uploadform';
 import {Akord, Auth} from '@akord/akord-js'
 import type {NextPage} from 'next'
 import Head from 'next/head'
-import React, { useState} from 'react'
+import React, {useState} from 'react'
 
 import {Button} from "@/components/ui/button";
 import {useTheme} from "next-themes";
@@ -81,7 +81,7 @@ function Login({onLogin}: { onLogin: (loggedIn: boolean) => void }) {
                         </div>
                         <div className="mt-2 text-sm md:text-base font-semibold">
                             {/* eslint-disable-next-line react/no-unescaped-entities */}
-                            Don't have an account? <a className="text-[#9a3412]" href="/register">Sign Up</a>
+                            Don't have an account? <a className="text-[#9a3412]" href="/signup">Sign Up</a>
                         </div>
                     </form>
                 </div>

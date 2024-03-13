@@ -1,6 +1,7 @@
 "use client";
 import {useState, useEffect} from "react";
 import {Akord, Auth} from '@akord/akord-js';
+import {Box} from "lucide-react";
 
 const InActive = () => {
     const [loggedIn, setLoggedIn] = useState<boolean>(true);
@@ -43,7 +44,16 @@ const InActive = () => {
                     <tbody>
                     {vaults.map((vault) => (
                         <tr className="border border-gray-800" key={vault.id}>
-                            <td style={{textAlign: 'start', padding: '8px'}}>{vault.name}</td>
+                            <td style={{
+                                textAlign: 'start',
+                                padding: '8px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px'
+                            }}>
+                                <Box className='text-[#913e15] bg-orange-900/30 rounded-sm'/>
+                                <span>{vault.name}</span>
+                            </td>
                             <td style={{textAlign: 'start', padding: '8px'}}>{vault.description}</td>
                             <td style={{textAlign: 'start', padding: '8px'}}>{vault.createdAt}</td>
                             <td style={{textAlign: 'start', padding: '8px'}}>{vault.updatedAt}</td>
