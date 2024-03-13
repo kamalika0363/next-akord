@@ -25,9 +25,6 @@ function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
             setAkord(akord);
             setSignedUp(true);
             onSignup(true);
-
-            const backup = await akord.wallet.backupPhrase();
-            setBackupPhrase(backup);
         } catch (error) {
             console.error('Signup failed:', error);
             setSignedUp(false);
@@ -78,7 +75,6 @@ function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
                             <button type="submit" className="hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold">
                                 Sign Up
                             </button>
-                            {/* Button to trigger account verification */}
                             <button type="button" onClick={verifyAccount} className="hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold">
                                 Verify Account
                             </button>
@@ -96,10 +92,7 @@ function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
         <div>
             {akord ? (
                 <div>
-                    <div>Logged in</div>
-                    {signedUp && <div>Your backup phrase: {backupPhrase}</div>}
-                </div>
-            ) : signupForm()}
+                    <div>Logged in</div> : signupForm()}
         </div>
     )
 }
