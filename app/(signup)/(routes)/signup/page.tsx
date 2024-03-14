@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Akord, Auth } from '@akord/akord-js';
 import Dashboard from "@/app/(dashboard)/(routes)/dashboard/page";
 
-function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
+export default function Signup() {
     const [akord, setAkord] = useState<Akord | null>();
     const [email, setEmail] = useState<string>('');
     const [pass, setPass] = useState<string>('');
@@ -22,7 +22,6 @@ function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
             const akord = await Akord.init(wallet);
             setAkord(akord);
             setAlertMessage(`User ${email} signed up successfully`);
-            // Call onSignup if needed
         } catch (error) {
             setAlertMessage(`User ${email} already exists`);
             console.error('Signup failed:', error);
@@ -100,4 +99,3 @@ function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
     )
 }
 
-export default Signup;
