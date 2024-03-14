@@ -92,7 +92,9 @@ function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
         <div>
             {akord ? (
                 <div>
-                    <div>Logged in</div> : signupForm()}
+                    <div>Logged in</div>
+                </div>
+            ) : signupForm()}
         </div>
     )
 }
