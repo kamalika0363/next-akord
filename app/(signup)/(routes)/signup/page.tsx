@@ -1,13 +1,12 @@
 "use client";
 import React, {useState} from "react";
 import {Akord, Auth} from '@akord/akord-js';
+import Dashboard from "@/app/(dashboard)/(routes)/dashboard/page";
 
 function Signup({onSignup}: { onSignup: (signedUp: boolean) => void }) {
     const [akord, setAkord] = useState<Akord | null>();
     const [email, setEmail] = useState<string>('');
     const [pass, setPass] = useState<string>('');
-    const [signedUp, setSignedUp] = useState<boolean>(false);
-    const [backupPhrase, setBackupPhrase] = useState<string>('');
 
     const handleSignup = async (event: any) => {
         event.preventDefault();
@@ -23,12 +22,12 @@ function Signup({onSignup}: { onSignup: (signedUp: boolean) => void }) {
             const {wallet} = await Auth.signUp(email, pass);
             const akord = await Akord.init(wallet);
             setAkord(akord);
-            setSignedUp(true);
-            onSignup(true);
+            // setSignedUp(true);
+            // onSignup(true);
         } catch (error) {
             console.error('Signup failed:', error);
-            setSignedUp(false);
-            onSignup(false);
+            // setSignedUp(false);
+            // onSignup(false);
         }
     };
 
@@ -74,7 +73,7 @@ function Signup({onSignup}: { onSignup: (signedUp: boolean) => void }) {
                         <div className="flex justify-center mt-6 gap-4">
                             <button
                                 type="submit"
-                                className="hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold" >
+                                className="hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold">
                                 Sign Up
                             </button>
                             <button type="button" onClick={verifyAccount}
@@ -93,11 +92,7 @@ function Signup({onSignup}: { onSignup: (signedUp: boolean) => void }) {
 
     return (
         <div>
-            {akord ? (
-                <div>
-                    <div>Logged in</div>
-                </div>
-            ) : signupForm()}
+            {akord ? <h1>Already an User</h1> : signupForm()}
         </div>
     )
 }
