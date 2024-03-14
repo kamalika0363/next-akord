@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
-import { Akord, Auth } from '@akord/akord-js';
+import React, {useState} from "react";
+import {Akord, Auth} from '@akord/akord-js';
 
-function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
+function Signup({onSignup}: { onSignup: (signedUp: boolean) => void }) {
     const [akord, setAkord] = useState<Akord | null>();
     const [email, setEmail] = useState<string>('');
     const [pass, setPass] = useState<string>('');
@@ -20,7 +20,7 @@ function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
         }
 
         try {
-            const { wallet } = await Auth.signUp(email, pass);
+            const {wallet} = await Auth.signUp(email, pass);
             const akord = await Akord.init(wallet);
             setAkord(akord);
             setSignedUp(true);
@@ -72,10 +72,13 @@ function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
                             />
                         </div>
                         <div className="flex justify-center mt-6 gap-4">
-                            <button type="submit" className="hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold">
+                            <button
+                                type="submit"
+                                className="hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold" >
                                 Sign Up
                             </button>
-                            <button type="button" onClick={verifyAccount} className="hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold">
+                            <button type="button" onClick={verifyAccount}
+                                    className="hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold">
                                 Verify Account
                             </button>
                         </div>
