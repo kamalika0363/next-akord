@@ -1,33 +1,31 @@
 "use client";
-import React, {useState} from "react";
-import {Akord, Auth} from '@akord/akord-js';
+import React, { useState } from "react";
+import { Akord, Auth } from '@akord/akord-js';
 import Dashboard from "@/app/(dashboard)/(routes)/dashboard/page";
 
-function Signup({onSignup}: { onSignup: (signedUp: boolean) => void }) {
+function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
     const [akord, setAkord] = useState<Akord | null>();
     const [email, setEmail] = useState<string>('');
     const [pass, setPass] = useState<string>('');
+    const [alertMessage, setAlertMessage] = useState<string>('');
 
     const handleSignup = async (event: any) => {
         event.preventDefault();
 
-        if (!email) {
-            throw new Error('Missing email');
-        }
-        if (!pass) {
-            throw new Error('Missing pass');
+        if (!email || !pass) {
+            setAlertMessage('Please provide both email and password');
+            return;
         }
 
         try {
-            const {wallet} = await Auth.signUp(email, pass);
+            const { wallet } = await Auth.signUp(email, pass);
             const akord = await Akord.init(wallet);
             setAkord(akord);
-            // setSignedUp(true);
-            // onSignup(true);
+            setAlertMessage(`User ${email} signed up successfully`);
+            // Call onSignup if needed
         } catch (error) {
+            setAlertMessage(`User ${email} already exists`);
             console.error('Signup failed:', error);
-            // setSignedUp(false);
-            // onSignup(false);
         }
     };
 
@@ -44,6 +42,11 @@ function Signup({onSignup}: { onSignup: (signedUp: boolean) => void }) {
         return (
             <div className='flex justify-center items-center p-24'>
                 <div className="flex flex-col w-96 gap-4">
+                    {alertMessage && (
+                        <div className="text-red-500 mb-4">
+                            {alertMessage}
+                        </div>
+                    )}
                     <div className="text-2xl font-semibold items-start">
                         Sign up for Akord
                     </div>
