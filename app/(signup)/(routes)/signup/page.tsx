@@ -2,21 +2,27 @@
 import React, { useState } from "react";
 import { Akord, Auth } from '@akord/akord-js';
 
-function Signup({ onSignup }: { onSignup: (signedUp: boolean) => void }) {
-    const [akord, setAkord] = useState<Akord | null>();
+interface SignupProps {
+    onSignup: (signedUp: boolean) => void;
+}
+
+const Signup: React.FC<SignupProps> = ({ onSignup }) => {
+    const [akord, setAkord] = useState<Akord | null>(null);
     const [email, setEmail] = useState<string>('');
     const [pass, setPass] = useState<string>('');
     const [signedUp, setSignedUp] = useState<boolean>(false);
     const [backupPhrase, setBackupPhrase] = useState<string>('');
 
-    const handleSignup = async (event: any) => {
+    const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if (!email) {
-            throw new Error('Missing email');
+            console.error('Missing email');
+            return;
         }
         if (!pass) {
-            throw new Error('Missing pass');
+            console.error('Missing pass');
+            return;
         }
 
         try {
