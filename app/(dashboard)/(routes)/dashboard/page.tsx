@@ -9,7 +9,7 @@ export default function Dashboard() {
     return (
         <div className="flex flex-row">
             <Sidebar/>
-            <BottomBar/>
+            <BottomBar />
             <div className="lg:ml-24">
                 <div className="flex flex-row gap-2 items-center justify-center font-semibold">
                     <Vault />

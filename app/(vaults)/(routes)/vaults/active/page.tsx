@@ -29,7 +29,7 @@ const Active = () => {
     }, [loggedIn]);
 
     return (
-        <div className="w-auto border rounded-sm">
+        <div className="w-80 lg:w-auto border rounded-sm mb-24">
             <div className="overflow-x-auto">
                 <table className="min-w-full">
                     <thead className="border-b border-gray-600/50">

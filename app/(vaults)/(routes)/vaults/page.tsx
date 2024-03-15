@@ -1,6 +1,6 @@
 "use client";
-import React, {useState, useEffect} from "react";
-import {Akord, Auth} from '@akord/akord-js';
+import React, { useState, useEffect } from "react";
+import { Akord, Auth } from '@akord/akord-js';
 import Active from "@/app/(vaults)/(routes)/vaults/active/page";
 import InActive from "@/app/(vaults)/(routes)/vaults/inactive/page";
 
@@ -16,7 +16,7 @@ const Vault = () => {
         const fetchVaults = async () => {
             try {
                 if (loggedIn) {
-                    const {wallet} = await Auth.authenticate();
+                    const { wallet } = await Auth.authenticate();
                     const akord = await Akord.init(wallet);
                     const vaults = await akord.vault.listAll();
                     const vaultDetails = vaults.map((vault) => ({
@@ -43,13 +43,13 @@ const Vault = () => {
     const handleCreateVault = async (event: any) => {
         event.preventDefault();
         try {
-            const {wallet} = await Auth.authenticate();
+            const { wallet } = await Auth.authenticate();
             const akord = await Akord.init(wallet);
             const vaultCreateResult = await akord.vault.create(newVaultName, {
                 description: newVaultDescription,
                 public: false
             });
-            const {vaultId, membershipId} = vaultCreateResult;
+            const { vaultId, membershipId } = vaultCreateResult;
             console.log("Created vault with ID:", vaultId);
             setNewVaultName('');
             setNewVaultDescription('');
@@ -63,6 +63,10 @@ const Vault = () => {
         setActiveSide(activeSide === 'ACTIVE' ? 'ARCHIVED' : 'ACTIVE');
     };
 
+    const closeCreateForm = () => {
+        setShowCreateForm(false);
+    }
+
     return (
         <div className="md:w-[160vh] pr-8 h-screen">
             <div className="flex flex-col gap-4">
@@ -74,11 +78,16 @@ const Vault = () => {
                                     className="rounded-md p-2 font-semibold bg-[#db400f] focus:outline-none">Create
                                 Vault</button>
                         )}
+                        {showCreateForm && (
+                            <button onClick={closeCreateForm}
+                                    className="rounded-md p-2 font-semibold bg-[#db400f] focus:outline-none">Close
+                                Form</button>
+                        )}
                     </div>
                 </div>
                 {showCreateForm && (
                     <form onSubmit={handleCreateVault}>
-                        <div className="flex flex-row gap-4">
+                        <div className="flex flex-col lg:flex-row gap-4">
                             <div>
                                 <input
                                     type="text"
