@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { Akord, Auth } from '@akord/akord-js';
+import React, {useState, useEffect} from "react";
+import {Akord, Auth} from '@akord/akord-js';
 import Active from "@/app/(vaults)/(routes)/vaults/active/page";
 import InActive from "@/app/(vaults)/(routes)/vaults/inactive/page";
 
@@ -16,7 +16,7 @@ const Vault = () => {
         const fetchVaults = async () => {
             try {
                 if (loggedIn) {
-                    const { wallet } = await Auth.authenticate();
+                    const {wallet} = await Auth.authenticate();
                     const akord = await Akord.init(wallet);
                     const vaults = await akord.vault.listAll();
                     const vaultDetails = vaults.map((vault) => ({
@@ -33,7 +33,7 @@ const Vault = () => {
             }
         };
 
-        fetchVaults();
+        fetchVaults().then(r => r);
     }, [loggedIn]);
 
     const createVault = () => {
@@ -43,13 +43,13 @@ const Vault = () => {
     const handleCreateVault = async (event: any) => {
         event.preventDefault();
         try {
-            const { wallet } = await Auth.authenticate();
+            const {wallet} = await Auth.authenticate();
             const akord = await Akord.init(wallet);
             const vaultCreateResult = await akord.vault.create(newVaultName, {
                 description: newVaultDescription,
                 public: false
             });
-            const { vaultId, membershipId } = vaultCreateResult;
+            const {vaultId, membershipId} = vaultCreateResult;
             console.log("Created vault with ID:", vaultId);
             setNewVaultName('');
             setNewVaultDescription('');

@@ -8,6 +8,7 @@ import React, {useState} from 'react'
 import {Button} from "@/components/ui/button";
 import {useTheme} from "next-themes";
 import Dashboard from "@/app/(dashboard)/(routes)/dashboard/page"
+import Link from "next/link";
 
 function Login({onLogin}: { onLogin: (loggedIn: boolean) => void }) {
     const [akord, setAkord] = useState<Akord | null>()

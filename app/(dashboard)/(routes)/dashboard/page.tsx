@@ -4,8 +4,9 @@ import Navbar from "@/components/Navbar/page";
 import Sidebar from "@/components/sidebar/sidebar";
 import BottomBar from "@/components/sidebar/bottombar";
 import Vault from "@/app/(vaults)/(routes)/vaults/page";
+import {NextPage} from "next";
 
-export default function Dashboard() {
+const Dashboard : NextPage = () =>  {
     return (
         <div className="flex flex-row">
             <Sidebar/>
@@ -18,3 +19,5 @@ export default function Dashboard() {
         </div>
     )
 }
+
+export default Dashboard;
