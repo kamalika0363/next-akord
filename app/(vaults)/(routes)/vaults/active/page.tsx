@@ -94,7 +94,7 @@ const Active = () => {
                             <td className="px-4 py-2 hidden xl:table-cell">{vault.createdAt}</td>
                             <td className="px-4 py-2 hidden xl:table-cell">{vault.updatedAt}</td>
                             <td className="px-4 py-2 hidden xl:table-cell">{vault.id}</td>
-                            <td className="px-4 py-2 hidden xl:table-cell">
+                            <td className="px-4 py-2 table-cell">
                                 <Link className="text-blue-500"
                                     href={{
                                     pathname: `/vaults/${vault.id}/assets`,
