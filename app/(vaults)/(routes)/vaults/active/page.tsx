@@ -29,7 +29,7 @@ const Active = () => {
     }, [loggedIn]);
 
     return (
-        <div className="w-screen">
+        <div className="w-auto">
             <div
                 className={`transition-all duration-500 ${activeSide === 'ACTIVE'}`}>
                 <table style={{width: '100%', justifyContent: 'start'}}>

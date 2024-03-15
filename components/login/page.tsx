@@ -70,9 +70,8 @@ function Login({onLogin}: { onLogin: (loggedIn: boolean) => void }) {
                                 placeholder="Password"
                             />
                         </div>
-                        <div
-                            className="flex justify-center mt-6 hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold">
-                            <button type="submit">
+                        <div>
+                            <button  className="flex w-full justify-center mt-6 hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold" type="submit">
                                 Log In
                             </button>
                         </div>
