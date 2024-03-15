@@ -64,8 +64,8 @@ const Vault = () => {
     };
 
     return (
-        <div className="w-[160vh]">
-            <div className="flex flex-col gap-4 h-full">
+        <div className="md:w-[160vh] pr-8 h-screen">
+            <div className="flex flex-col gap-4">
                 <div className="flex flex-row justify-between">
                     <h1 className="font-bold text-2xl">Vault</h1>
                     <div className="flex flex-row gap-4">
@@ -85,7 +85,7 @@ const Vault = () => {
                                     placeholder="Vault Name"
                                     value={newVaultName}
                                     onChange={(e) => setNewVaultName(e.target.value)}
-                                    className="rounded-md p-2 border border-gray-300/30 bg-transparent focus:outline-none"
+                                    className="rounded-sm p-2 border border-gray-300/30 bg-transparent focus:outline-none"
                                 />
                             </div>
                             <div>
@@ -94,12 +94,12 @@ const Vault = () => {
                                     placeholder="Vault Description"
                                     value={newVaultDescription}
                                     onChange={(e) => setNewVaultDescription(e.target.value)}
-                                    className="rounded-md p-2 border border-gray-300/30 bg-transparent focus:outline-none"
+                                    className="rounded-sm p-2 border border-gray-300/30 bg-transparent focus:outline-none"
                                 />
                             </div>
                             <div>
                                 <button type="submit"
-                                        className="rounded-md p-2 font-semibold bg-[#db400f] focus:outline-none">Create
+                                        className="rounded-sm p-2 font-semibold bg-[#db400f] focus:outline-none">Create
                                 </button>
                             </div>
                         </div>

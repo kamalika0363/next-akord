@@ -29,28 +29,29 @@ const Active = () => {
     }, [loggedIn]);
 
     return (
-        <div className="w-auto">
-            <div
-                className={`transition-all duration-500 ${activeSide === 'ACTIVE'}`}>
-                <table style={{width: '100%', justifyContent: 'start'}}>
-                    <thead>
+        <div className="w-auto border rounded-sm">
+            <div className="overflow-x-auto">
+                <table className="min-w-full">
+                    <thead className="border-b border-gray-600/50">
                     <tr>
-                        <th style={{textAlign: 'start', padding: '8px'}}>Name</th>
-                        <th style={{textAlign: 'start', padding: '8px'}}>Description</th>
-                        <th style={{textAlign: 'start', padding: '8px'}}>Created At</th>
-                        <th style={{textAlign: 'start', padding: '8px'}}>Updated At</th>
+                        <th className="px-4 py-2 text-left">Name</th>
+                        <th className="px-4 py-2 text-left hidden xl:table-cell">Description</th>
+                        <th className="px-4 py-2 text-left hidden xl:table-cell">Created At</th>
+                        <th className="px-4 py-2 text-left hidden xl:table-cell">Updated At</th>
                     </tr>
                     </thead>
                     <tbody>
                     {vaults.map((vault) => (
-                        <tr className="border border-gray-800" key={vault.id}>
-                            <td style={{textAlign: 'start', padding: '8px', display: 'flex', alignItems: 'center', gap:'6px'}}>
-                                <Box className='text-[#913e15] bg-orange-900/30 rounded-sm'/>
-                                <span>{vault.name}</span>
+                        <tr key={vault.id} className="border-b border-gray-600/50">
+                            <td className="px-4 py-2 whitespace-nowrap">
+                                <div className="flex items-center">
+                                    <Box className="text-[#913e15] bg-orange-900/30 rounded-sm mr-2"/>
+                                    <span>{vault.name}</span>
+                                </div>
                             </td>
-                            <td style={{textAlign: 'start', padding: '8px'}}>{vault.description}</td>
-                            <td style={{textAlign: 'start', padding: '8px'}}>{vault.createdAt}</td>
-                            <td style={{textAlign: 'start', padding: '8px'}}>{vault.updatedAt}</td>
+                            <td className="px-4 py-2 hidden xl:table-cell">{vault.description}</td>
+                            <td className="px-4 py-2 hidden xl:table-cell">{vault.createdAt}</td>
+                            <td className="px-4 py-2 hidden xl:table-cell">{vault.updatedAt}</td>
                         </tr>
                     ))}
                     </tbody>
