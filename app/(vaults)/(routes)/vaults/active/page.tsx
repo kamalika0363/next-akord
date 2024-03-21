@@ -69,7 +69,7 @@ const Active = () => {
     };
 
     return (
-        <div className="w-80 lg:w-auto border rounded-sm mb-24">
+        <div className="w-auto border rounded-sm mb-24">
             <div className="overflow-x-auto">
                 <table className="min-w-full">
                     <thead className="border-b border-gray-600/50">
@@ -78,13 +78,13 @@ const Active = () => {
                         <th className="px-4 py-2 text-left hidden xl:table-cell">Description</th>
                         <th className="px-4 py-2 text-left hidden xl:table-cell">Created At</th>
                         <th className="px-4 py-2 text-left hidden xl:table-cell">Updated At</th>
-                        <th className="px-4 py-2 text-left hidden xl:table-cell">Vault Id</th>
+                        {/*<th className="px-4 py-2 text-left hidden xl:table-cell">Vault Id</th>*/}
                         <th className="px-4 py-2 text-left hidden xl:table-cell">Show Vault</th>
                     </tr>
                     </thead>
                     <tbody>
                     {vaults.map((vault) => (
-                        <tr key={vault.id} className="border-b border-gray-600/50 text-slate-200">
+                        <tr key={vault.id} className="border-b border-gray-600/50 dark:text-slate-200">
                             <td className="px-4 py-2 whitespace-nowrap">
                                 <div className="flex items-center cursor-pointer" onClick={uploadForm(vault.id)}>
                                     <Box className="text-[#913e15] bg-orange-900/30 rounded-sm mr-2"/>
@@ -94,7 +94,7 @@ const Active = () => {
                             <td className="px-4 py-2 hidden xl:table-cell">{vault.description}</td>
                             <td className="px-4 py-2 hidden xl:table-cell">{format(+vault.createdAt,"Pp")}</td>
                             <td className="px-4 py-2 hidden xl:table-cell">{format(+vault.updatedAt,"Pp")}</td>
-                            <td className="px-4 py-2 hidden xl:table-cell">{vault.id}</td>
+                            {/*<td className="px-4 py-2 hidden xl:table-cell">{vault.id}</td>*/}
                             <td className="px-4 py-2 table-cell">
                                 <Link className="text-blue-500"
                                     href={{

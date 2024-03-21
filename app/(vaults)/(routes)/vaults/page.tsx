@@ -75,12 +75,13 @@ const Vault = () => {
                     <div className="flex flex-row gap-4">
                         {!showCreateForm && (
                             <button onClick={createVault}
-                                    className="rounded-md p-2 font-semibold bg-[#db400f] focus:outline-none">Create
-                                Vault</button>
+                                    className="rounded-sm p-2 font-semibold bg-[#db400f]/80 text-sm focus:outline-none">Create
+                                Vault
+                            </button>
                         )}
                         {showCreateForm && (
                             <button onClick={closeCreateForm}
-                                    className="rounded-md p-2 font-semibold bg-[#db400f] focus:outline-none">Close
+                                    className="rounded-sm p-2 font-semibold bg-[#db400f]/80 text-sm focus:outline-none">Close
                                 Form</button>
                         )}
                     </div>
@@ -108,7 +109,7 @@ const Vault = () => {
                             </div>
                             <div>
                                 <button type="submit"
-                                        className="rounded-sm p-2 font-semibold bg-[#db400f] focus:outline-none">Create
+                                        className="rounded-sm p-2 font-semibold bg-[#db400f]/80 text-sm focus:outline-none">Create
                                 </button>
                             </div>
                         </div>

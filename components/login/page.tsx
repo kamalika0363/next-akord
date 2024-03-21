@@ -1,20 +1,19 @@
 "use client";
 import {Akord, Auth} from '@akord/akord-js'
 import Head from 'next/head'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import {Button} from "@/components/ui/button";
 import {useTheme} from "next-themes";
 import Dashboard from "@/app/(dashboard)/dashboard/page";
 
 function Login({onLogin}: { onLogin: (loggedIn: boolean) => void }) {
-    const [akord, setAkord] = useState<Akord | null>()
-    const [email, setEmail] = useState<string>('')
-    const [pass, setPass] = useState<string>('')
-    const [loggedIn, setLoggedIn] = useState<boolean>(false)
+    const [akord, setAkord] = useState<Akord | null>(null);
+    const [email, setEmail] = useState<string>('');
+    const [pass, setPass] = useState<string>('');
+    const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
-
-    const handleLogin = async (event: any) => {
+    const handleLogin = async (event: React.FormEvent) => {
         event.preventDefault();
 
         if (!email) {
@@ -25,12 +24,14 @@ function Login({onLogin}: { onLogin: (loggedIn: boolean) => void }) {
         }
 
         try {
-            const {wallet} = await Auth.signIn(email, pass);
+            const {wallet, jwt} = await Auth.signIn(email, pass);
+            const user = {email, jwt, wallet}
             const akord = await Akord.init(wallet);
+            Auth.configure({storage:window.sessionStorage});
             setAkord(akord);
             setLoggedIn(true);
             onLogin(true);
-            
+            localStorage.setItem('loggedIn', 'true');
         } catch (error) {
             console.error('Login failed:', error);
             setLoggedIn(false);
@@ -38,6 +39,12 @@ function Login({onLogin}: { onLogin: (loggedIn: boolean) => void }) {
         }
     };
 
+    useEffect(() => {
+        const isUserLoggedIn = localStorage.getItem('loggedIn');
+        if (isUserLoggedIn === 'true') {
+            setLoggedIn(true);
+        }
+    }, []);
 
     const {setTheme} = useTheme()
 
@@ -71,7 +78,9 @@ function Login({onLogin}: { onLogin: (loggedIn: boolean) => void }) {
                             />
                         </div>
                         <div>
-                            <button  className="flex w-full justify-center mt-6 hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold" type="submit">
+                            <button
+                                className="flex w-full justify-center mt-6 hover:bg-[#9a3412] border border-[#53515c] p-3 rounded-sm text-md font-bold"
+                                type="submit">
                                 Log In
                             </button>
                         </div>

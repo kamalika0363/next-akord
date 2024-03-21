@@ -4,6 +4,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { BellDot, Codesandbox, Server, Settings, ChevronDownIcon } from "lucide-react";
 import Vault from "@/app/(vaults)/(routes)/vaults/page";
 import { Akord, Auth } from "@akord/akord-js";
+import Link from "next/link";
 
 interface VaultDetails {
     id: string;
@@ -60,7 +61,7 @@ export default function Sidebar() {
                                     <DropdownMenuItem key={vault.id}>
                                         <div className="flex flex-row gap-3">
                                             <Server className="text-orange-800" size={24} />
-                                            {vault.name}
+                                            <Link href={`/vaults/${vault.id}/assets`}>{vault.name}</Link>
                                         </div>
                                     </DropdownMenuItem>
                                 ))}

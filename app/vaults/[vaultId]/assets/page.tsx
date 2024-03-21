@@ -57,15 +57,15 @@ const Assets = ({ params }: {
     }
 
     return (
-        <div className="p-12">
+        <div className="p-6 lg:p-12">
             {vaultDetails && (
-                <div className="w-80 lg:w-auto border rounded-sm mb-24">
-                    <div className="flex items-center justify-between bg-orange-800 p-4">
+                <div className="w-auto border mb-24 dark:text-white/80">
+                    <div className="flex items-center justify-between  bg-[#9a3412] darK:bg-[#9a3412]/70 text-gray-200 p-4">
                         <h1 className="text-2xl font-bold">{vaultDetails.name}</h1>
                     </div>
                     <div className="overflow-x-auto">
                         <table className="min-w-full">
-                            <thead className="border-b border-gray-600/50">
+                            <thead className="border-b dark:border-gray-600/50 border-gray-600/30">
                             <tr>
                                 <th className="px-4 py-2 text-left">Vault ID</th>
                                 <th className="px-4 py-2 text-left hidden xl:table-cell">Name</th>
@@ -81,36 +81,42 @@ const Assets = ({ params }: {
                             </tbody>
                         </table>
                     </div>
-                    <div className="flex items-center justify-between bg-orange-800 p-4">
-                        <h1 className="text-2xl font-bold">Stacks</h1>
+                    <div className="flex items-center justify-between bg-[#9a3412] darK:bg-[#9a3412]/70 p-4">
+                        <h1 className="lg:text-2xl text-xl font-bold">Stacks</h1>
                     </div>
                     <div className="text-white">
                         {stacks.map((stack) => (
-                            <div key={stack.id} className="p-4 border-b border-gray-600/50">
-                                <div className="flex items-center justify-between">
+                            <div key={stack.id} className="p-4 border-b border-gray-600/50 flex">
+                                <div className="flex flex-col gap-4 justify-between">
                                     <div>
-                                        <h1 className="flex gap-1.5 text-xl font-bold">
+                                        <h1 className="flex gap-1.5 text-lg dark:text-white/90 text-gray-800 font-semibold">
                                             <FileImage size={24} />
                                             {stack.name}
                                         </h1>
-                                        <p className="text-gray-400">{stack.id}</p>
+                                        <p className="text-gray-800 dark:text-gray-400 text-sm">{stack.id}</p>
                                     </div>
                                     <div>
-                                        <Button onClick={() => handleShowImage(stack.id)}>
+                                        <Button className="p-2 bg-[#9a3412] dark:bg-[#9a3412]/80 dark:text-white/90 rounded-sm" onClick={() => handleShowImage(stack.id)}>
                                             Show Image
                                         </Button>
                                     </div>
-                                </div>
-                                {selectedStackId === stack.id && imgUrl && showImage && (
-                                    <div className="flex items-center justify-center p-12 flex-col">
-                                        <Button onClick={() => handleDownloadImage(stack.id)}>
-                                            Download Image
-                                        </Button>
-                                        <img src={imgUrl} alt={`Image for Stack ${stack.id}`} />
-                                        <div className="mt-4">
+                                    {selectedStackId === stack.id && imgUrl && showImage && (
+                                        <div className="">
+                                            <Button onClick={() => handleDownloadImage(stack.id)} className="mb-4 p-2 text-sm rounded-sm">
+                                                Download Image
+                                            </Button>
+                                            <img src={imgUrl} alt={`Image for Stack ${stack.id}`} />
                                         </div>
-                                    </div>
-                                )}
+                                    )}
+                                </div>
+                                {/*{selectedStackId === stack.id && imgUrl && showImage && (*/}
+                                {/*    <div className="">*/}
+                                {/*        <Button onClick={() => handleDownloadImage(stack.id)} className="mb-4">*/}
+                                {/*            Download Image*/}
+                                {/*        </Button>*/}
+                                {/*        <img src={imgUrl} alt={`Image for Stack ${stack.id}`} />*/}
+                                {/*    </div>*/}
+                                {/*)}*/}
                             </div>
                         ))}
                     </div>
