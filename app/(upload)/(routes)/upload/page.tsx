@@ -23,6 +23,8 @@ const Form = () => {
         confirm("Uploading file to vault: " + vault.name)
         // @ts-ignore
         const {stackId} = await akord.stack.create(vault.id, file, file.name)
+        const getImages = await akord.stack.listAll(vault.id)
+        console.log(getImages)
         confirm("Created stack: " + stackId)
         setAkord(null)
     }
@@ -46,6 +48,9 @@ const Form = () => {
                         </div>
                     </label>
                 </form>
+                <div>
+
+                </div>
             </div>
         );
     };

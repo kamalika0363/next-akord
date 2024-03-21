@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import {Akord, Auth} from '@akord/akord-js';
 import {Box} from "lucide-react";
 import Link from "next/link";
+import {format} from "date-fns/format";
 
 const Active = () => {
     const [akord, setAkord] = useState<Akord | null>(null);
@@ -91,8 +92,8 @@ const Active = () => {
                                 </div>
                             </td>
                             <td className="px-4 py-2 hidden xl:table-cell">{vault.description}</td>
-                            <td className="px-4 py-2 hidden xl:table-cell">{vault.createdAt}</td>
-                            <td className="px-4 py-2 hidden xl:table-cell">{vault.updatedAt}</td>
+                            <td className="px-4 py-2 hidden xl:table-cell">{format(+vault.createdAt,"Pp")}</td>
+                            <td className="px-4 py-2 hidden xl:table-cell">{format(+vault.updatedAt,"Pp")}</td>
                             <td className="px-4 py-2 hidden xl:table-cell">{vault.id}</td>
                             <td className="px-4 py-2 table-cell">
                                 <Link className="text-blue-500"

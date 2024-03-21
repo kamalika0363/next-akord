@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Akord, Auth } from '@akord/akord-js';
-import Dashboard from "@/app/(dashboard)/(routes)/dashboard/page";
+import Dashboard from "@/app/(dashboard)/dashboard/page";
 
 export default function Signup() {
     const [akord, setAkord] = useState<Akord | null>();

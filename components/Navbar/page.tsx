@@ -34,7 +34,7 @@ export default function Navbar() {
 
 
     return (
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-4">
             <div className="text-3xl font-bold">
                 <Link href="/">
                     Akord
