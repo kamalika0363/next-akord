@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { BellDot, Codesandbox, Server, Settings, ChevronDownIcon } from "lucide-react";
+import React, {useState, useEffect} from "react";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
+import {BellDot, Codesandbox, Server, Settings, ChevronDownIcon} from "lucide-react";
 import Vault from "@/app/(vaults)/(routes)/vaults/page";
-import { Akord, Auth } from "@akord/akord-js";
+import {Akord, Auth} from "@akord/akord-js";
 import Link from "next/link";
 
 interface VaultDetails {
@@ -25,7 +25,7 @@ export default function Sidebar() {
 
     const fetchVaults = async () => {
         try {
-            const { wallet } = await Auth.authenticate();
+            const {wallet} = await Auth.authenticate();
             const akord = await Akord.init(wallet);
             const vaults = await akord.vault.listAll();
             const vaultDetails = vaults.map((vault) => ({
@@ -52,15 +52,15 @@ export default function Sidebar() {
                     <DropdownMenu>
                         <DropdownMenuTrigger>
                             <div className="flex flex-row gap-3 mb-6">
-                                <Codesandbox className="text-orange-800" size={24} />
+                                <Codesandbox className="text-orange-800" size={24}/>
                                 Vaults
-                                <ChevronDownIcon className="mt-1 text-orange-800" size={20} />
+                                <ChevronDownIcon className="mt-1 text-orange-800" size={20}/>
                             </div>
                             <DropdownMenuContent>
                                 {vaults.map((vault) => (
                                     <DropdownMenuItem key={vault.id}>
                                         <div className="flex flex-row gap-3">
-                                            <Server className="text-orange-800" size={24} />
+                                            <Server className="text-orange-800" size={24}/>
                                             <Link href={`/vaults/${vault.id}/assets`}>{vault.name}</Link>
                                         </div>
                                     </DropdownMenuItem>
@@ -70,15 +70,15 @@ export default function Sidebar() {
                     </DropdownMenu>
                 </div>
                 <div className="flex flex-row gap-3">
-                    <Server className="text-orange-800" size={24} />
-                    Storage
+                    <Server className="text-orange-800" size={24}/>
+                    <Link href={`/storage`}>Storage</Link>
                 </div>
                 <div className="flex flex-row gap-3">
-                    <BellDot className="text-orange-800" size={24} />
+                    <BellDot className="text-orange-800" size={24}/>
                     Notifications
                 </div>
                 <div className="flex flex-row gap-3">
-                    <Settings className="text-orange-800" size={24} />
+                    <Settings className="text-orange-800" size={24}/>
                     Account
                 </div>
             </div>

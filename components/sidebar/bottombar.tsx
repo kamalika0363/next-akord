@@ -70,7 +70,7 @@ export default function BottomBar() {
                 </div>
                 <div className="flex justify-center flex-col items-center">
                     <Server size="24" />
-                    <span className="text-xs">Storage</span>
+                    <Link className="text-xs" href={`/storage`}>Storage</Link>
                 </div>
                 <div className="flex justify-center flex-col items-center">
                     <BellDot size="24" />
